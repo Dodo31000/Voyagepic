@@ -1,0 +1,107 @@
+/*small smartphone*/
+@media screen and (max-width:414px) {
+
+    header nav{
+        position: relative;
+        #burger{
+            display: block;
+        }
+        ul{
+            position: absolute;
+            top:0;
+            left:0.5em;
+            width:8em;
+            background: rgba(255, 255, 255, 0.452);
+            border-radius: 3px;
+            visibility: hidden;
+            height: 0;
+            flex-direction: column;
+            align-items: flex-start;
+            transition: all 1s;
+            li{
+                margin: 0;
+            }  
+        }
+        .display-menu{
+            visibility: visible;
+            height: 8em;
+        }
+    }
+
+    
+    main{
+        .selection{
+            display: flex;
+            flex-direction: column;
+            .continent-selection,  .country-selection{
+                width: 100%;
+            }
+        }
+    }
+
+    
+}
+
+
+/*small tablette & iphone*/
+@media screen and (min-width:415px) and (max-width:600px) {
+    
+    header nav{
+        position: relative;
+        #burger{
+            display: block;
+        }
+        ul{
+            position: absolute;
+            top:0;
+            left:0.5em;
+            width:8em;
+            background: rgba(255, 255, 255, 0.452);
+            border-radius: 3px;
+            visibility: hidden;
+            height: 0;
+            flex-direction: column;
+            align-items: flex-start;
+            transition: all 1s;
+            li{
+                margin: 0;
+            }  
+        }
+        .display-menu{
+            visibility: visible;
+            height: 8em;
+        }
+    }
+    
+    .home-subcontainer{
+        .selection{
+            display: flex;
+            flex-direction: column;
+            max-height: 80%;
+            .continent-selection,  .country-selection{
+                width: 100%;
+            }
+        }
+    }
+}
+
+  /*Tablette*/
+@media screen and (min-width:601px) and (max-width:768px){
+    .home .home-container .home-subcontainer{
+        .selection{
+            display: flex;
+            flex-direction: column;
+            .continent-selection,  .country-selection{
+                width: 100%;
+            }
+        }
+    }
+
+}
+
+  /*PC portable*/
+@media screen and (min-width:769px) and (max-width:1280px) {
+    
+}
+
+    

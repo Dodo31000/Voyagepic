@@ -1,0 +1,142 @@
+@import 'partial';@import 'partial';
+
+.contact{
+    width:100%;
+    height: 85%;
+    margin-top:5em;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    background: linear-gradient(to bottom left,rgb(209, 209, 209), white);
+    background-size: cover ;
+    z-index: 1;
+    &::before{
+        content:"";
+        width:100%;
+        height:100%;
+        position: absolute;
+        background: url("/img/plante.jpg") top no-repeat;
+        background-size: cover;
+        z-index: -1;
+    }
+    .contact-container{
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.712);
+        h1,i{
+            color: $violet-color;
+        }
+        h1{
+            margin-bottom: 3em;;
+        }
+        .sub-contact{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            p{
+                font-weight: bold;
+                text-align: center;
+            }
+            a{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                color: $violet-color;
+                &:hover hr{
+                    opacity: 1;
+                    width:12em;
+                }
+            }
+            hr{
+                width:0;
+                border: solid 1px $violet-color;
+                margin-top: 3px;
+                opacity: 0;
+                transition: all 1s;
+            }
+        }
+        form{   
+            .form-content{
+                display: flex;
+                flex-direction: column;
+                border:none;
+                p{
+                    margin:0.5em;
+                }
+                div{
+                    display: flex;
+                    width: 100%;
+                    p{
+                        width: 20%;
+                    }
+                    div{ 
+                        display: flex;
+                        flex-direction: column;
+                        p{
+                            width: 80%;
+                        }
+                        small{
+                            text-indent: 2em;
+                        }
+                    }
+                }
+                
+                label{
+                    color: $violet-color;
+                }
+                input, textarea{
+                    color: $violet-color;
+                    width: 100%;
+                    margin-left: 1em;
+                    background: rgba(255, 255, 255, 0.596);
+                    border:none;
+                    border-bottom: solid 1px $green-color;
+                    border-radius: 3px;
+                    //border:solid 1px rgb(238, 238, 238);
+                    box-shadow: inset 2px 2px 5px rgba(175, 175, 175, 0.247);
+                    &:hover{
+                        background:transparentize($green-color, 0.5);
+                    }
+                    &:focus, &:active{
+                        outline:none;
+                    }
+                }  
+            }
+            .form-buttons{ 
+                margin-top:3em;
+                input{
+                    @include styled-buttons($violet-color);
+                    &:hover{
+                        border:solid 1px $violet-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/*small smartphone, small tablette & iphone*/
+@media screen and (max-width:600px) {
+
+    .contact .contact-container {
+        overflow: auto;
+        h1{
+            margin-bottom: 1em;
+        }
+    }
+    .contact .contact-container form .form-content div{
+        flex-direction: column;
+        p{
+            width: 100%;
+        }
+    }
+    .contact .contact-container form .form-buttons{
+        margin-top: 1em;
+    }
+}

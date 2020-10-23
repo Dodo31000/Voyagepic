@@ -1,0 +1,97 @@
+$green-color: #1fd61f;
+$default-color: #333333;
+$title-police:'Montserrat', sans-serif;
+$subtitle-police:'Gothic A1', sans-serif;
+$violet-color: rgb(81, 25, 95);
+
+@mixin scollbars($direction){
+    &::-webkit-scrollbar-track{  /* Track */
+        border-radius: 10px;
+        background: linear-gradient(to $direction,transparent 40%, grey, transparent 50%)
+    }
+    &::-webkit-scrollbar-thumb{/* Handle */
+        background: #f8f8f8; 
+        border-radius: 10px;
+        border: solid 1px #ccc4c4;
+        &:hover { /* Handle on hover */
+            background: white;
+        }
+    }
+}
+
+@mixin styled-buttons($color){
+    width: 8em;
+    margin: 1em;
+    border-radius: 30px;
+    padding: 1em;
+    border: none;
+    color:white;
+    background-color: $color;
+    box-shadow: none;
+    cursor: pointer;
+    font-weight: bold ;
+    position: relative;
+    &:focus, &:active{
+        outline:none;
+        transform: scale(1.1);
+    }
+    &:hover{
+        color: $color;
+        background-color: white;
+        &::before{
+            content:"";
+            width: 100%;
+            height: 100%;
+            position:absolute;
+            top:0;
+            left: 0;
+            border-radius: 30px;
+            background-color:transparentize($color, 0.8);
+            animation: sonar 1.3s linear infinite;
+        }
+        & span{
+            color: $color;
+        }
+    }
+    span{
+        color: white;
+        margin-right: 1em;
+    }
+}
+
+
+@keyframes slide-up{
+    from{margin-bottom: -2em;}
+    to{margin-bottom: 0;}
+}
+
+@keyframes slide-left{
+    from{margin-left: 10em;}
+    to{margin-left: 1em;}
+}
+
+@keyframes slide-down{
+    from{margin-top: 10em;}
+    to{margin-top: 1em;}
+}
+
+@keyframes sonar{
+    from{opacity: 1;transform: scale(1);}
+    to{opacity: 0;transform: scale(2.3);}
+}
+
+@keyframes appear{
+    from{width:0;opacity: 0;}
+    to{width:30em;opacity: 1;}
+}
+
+@keyframes img-opacity{
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+
+@keyframes brightness{
+    0%{filter: brightness(0.7);}
+    50%{filter: brightness(1);}
+    100%{filter: brightness(0.7);}
+}
