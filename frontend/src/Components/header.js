@@ -28,7 +28,11 @@ const Header = ({openMenuClick, item}) =>(
             </nav>
         </div> 
 
-        <Link to={`/${item}`}>
+        {/*<Link to={`/${item}`}>
+            <h1>VoyagePic</h1>
+        </Link>*/}
+
+        <Link to='login'>
             <h1>VoyagePic</h1>
         </Link>
     </header>

@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const continentsRoutes = require('./routes/continents');
 const countriesRoutes = require('./routes/countries');
 const picturesRoutes = require('./routes/pictures');
+const userRoutes = require('./routes/user');
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use(bodyParser.json());
 app.use('/api/continents', continentsRoutes);
 app.use('/api/countries', countriesRoutes);
 app.use('/api/pictures', picturesRoutes);
+app.use('/api/auth', userRoutes);
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 module.exports = app;

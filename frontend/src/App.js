@@ -6,6 +6,7 @@ import Introduce from './Components/Introduce';
 import SimpleContact from './Components/SimpleContact';
 import List from './Components/BDD/List';
 import Edit from './Components/BDD/Edit';
+import Login from './Components/Login';
 import PictureByCountrylist from './Components/Data/Picture_listByCountry'
 import {
     BrowserRouter as Router,
@@ -75,6 +76,11 @@ class App extends Component{
                     <Route exact path="/Gallery/:continentName/:countryName"  render={(props)=> 
                       <Gallery {...props} />
                       } 
+                    />
+
+                    <Route exact path="/login"  render={(props)=> 
+                      <Login {...props}/> 
+                    } 
                     />
 
                     <Route exact path="/:item"  render={(props)=> 
