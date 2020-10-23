@@ -37,7 +37,9 @@ class List extends Component{
             location: '',
             imageUrl:null,
             image_preview: '',
-            picName:''
+            picName:'',
+            message: '',
+            errors: {}
           };
     
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -77,7 +79,6 @@ class List extends Component{
           })
     }
 
-
     resetForm(){
       this.setState({
         continent:'', 
@@ -95,11 +96,10 @@ class List extends Component{
 
     handleSubmit(e){
         e.preventDefault()
+        const objContinents = new FormData() 
 
-        const continentData = new FormData() 
-
-        continentData.append('file', this.state.imageUrl)
-        continentData.append('name', this.state.name)
+            objContinents.append('file', this.state.imageUrl)
+            objContinents.append('name', this.state.name)
 
         const CountryData = new FormData()
 
@@ -110,7 +110,6 @@ class List extends Component{
             CountryData.append('long', this.state.long)
             CountryData.append('description', this.state.description)
         
-
         const params = this.props.match.params
 
         const pictureData = new FormData() 
@@ -123,25 +122,16 @@ class List extends Component{
         pictureData.append('long', this.state.long)
         pictureData.append('location', this.state.location)
         pictureData.append('legend', this.state.legend)
-
-        /*axios.post('/api/'+params.item, params.item === "continents" ? continentData : (params.item === "countries" ? newCountry : pictureData))
-            .then(res => {console.log(res.data)})
-            .then(this.resetForm());
-            const data = JSON.stringify(this.state);
-            console.log(data)
-            //continentData.push(newCountry)*/
     
-            axios.all([
-            axios.post('/api/'+params.item, params.item === "continents" ? continentData : (params.item === "countries" ? CountryData : pictureData)),
-            //axios.put('/api/countries', newCountry)    
-        ]).then(axios.spread((res1, res2) => {
-            //console.log(res1.data);
-            //console.log(res2.data);
-        }))
 
-        //window.setTimeout(this.props.history.push('/'+params.item), 2000);
-       //this.props.history.go();
-    }
+    
+            axios.post('/api/'+params.item, 
+            params.item === "continents" ? objContinents : 
+            (params.item === "countries" ? CountryData : pictureData))
+
+        }
+
+
 
     componentDidMount() {
             axios.all([

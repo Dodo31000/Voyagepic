@@ -8,7 +8,7 @@ function ContinentForm({
     handleUrlChange, 
     handleCancel, 
     nameValue, 
-    image_preview
+    image_preview,
 })
 {
     return(
@@ -18,12 +18,12 @@ function ContinentForm({
 
                 <div className="input-box">
                     <label htmlFor="continent">continent</label>
-                    <input type="text" name="name" value={nameValue} onChange={handleChange}/>
+                    <input type="text" name="name" value={nameValue} onChange={handleChange} required/>
                 </div>
 
                 <div className="input-box">
                     <label htmlFor="url">Image Url</label>
-                    <input type="file" name="file" onChange={handleUrlChange}/>
+                    <input type="file" name="file" onChange={handleUrlChange} required/>
                     <div className="cancel-img" onClick={handleCancel}> &#10006;</div>
                 </div>
 

@@ -25,7 +25,7 @@ function PictureForm({
 
             <div className="input-box">
                 <label htmlFor="url">Image Url</label>
-                <input type="file" name="file" onChange={handleUrlChange}/>
+                <input type="file" name="file" onChange={handleUrlChange} required/>
                 <div className="cancel-img" onClick={handleCancel}> &#10006;</div>
             </div>
 
@@ -33,12 +33,12 @@ function PictureForm({
 
             <div className="input-box">
                 <label htmlFor="name">Image Name</label>
-                <input type="text" name="picName" value={nameValue} onChange={handleChange}/>
+                <input type="text" name="picName" value={nameValue} onChange={handleChange} required/>
             </div>
             
             <div className="input-box">
                 <label htmlFor="continent">Continent</label>
-                <select name="continent" id="continent" value={continentValue} onChange={handleChange}>
+                <select name="continent" id="continent" value={continentValue} onChange={handleChange} required>
                     <option value="" >--sélectionner--</option> 
                     {continents.map((continent, index) => 
                         <option value={continent._id} key = {index}>{continent.name}</option> 
@@ -48,7 +48,7 @@ function PictureForm({
 
             <div className="input-box">
                 <label htmlFor="country">Country</label>
-                <select name="country" id="country" value={countryValue} onChange={handleChange}>
+                <select name="country" id="country" value={countryValue} onChange={handleChange} required>
                     <option value="" >--sélectionner--</option> 
                     {countries.filter(country => country.continent._id === continentValue).map((country, index) => 
                         <option value={country._id} key = {index}>{country.name}</option> 
@@ -58,19 +58,19 @@ function PictureForm({
 
             <div className="input-box">
                 <label htmlFor="latitude">Latitude</label>
-                <input type="number" name="lat" value={latValue} onChange={handleChange}/> 
+                <input type="number" name="lat" value={latValue} onChange={handleChange} required/> 
             </div>
             <small>*Utiliser des virgules</small>
 
             <div className="input-box">
                 <label htmlFor="longitude">Longitude</label>
-                <input type="number" name="long" value={longValue} onChange={handleChange}/>
+                <input type="number" name="long" value={longValue} onChange={handleChange} required/>
             </div>
             <small>*Utiliser des virgules</small>
             
             <div className="input-box">
                 <label htmlFor="location">Location</label>
-                <textarea name="location" value={locationValue} id="location" cols="50" rows="2" onChange={handleChange}/>
+                <textarea name="location" value={locationValue} id="location" cols="50" rows="2" onChange={handleChange} required/>
             </div>
 
             <div className="input-box">

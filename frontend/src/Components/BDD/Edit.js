@@ -58,11 +58,6 @@ class Edit extends Component{
       handleDelete(){
         const params = this.props.match.params
 
-        /*axios.delete('/api/'+params.item+'/delete/'+params.id)
-        .then(res => {console.log(res.data)})
-        const data = JSON.stringify(this.state);
-        console.log(data)*/
-
       const ObjCountry = new FormData()
 
       ObjCountry.append('file', this.state.imageUrl)
@@ -101,8 +96,8 @@ class Edit extends Component{
 
         const objContinents = new FormData() 
 
-        objContinents.append('file', this.state.imageUrl)
-        objContinents.append('name', this.state.name)
+            objContinents.append('file', this.state.imageUrl)
+            objContinents.append('name', this.state.name)
 
         const CountryData = new FormData()
 
@@ -113,16 +108,16 @@ class Edit extends Component{
             CountryData.append('long', this.state.long)
             CountryData.append('description', this.state.description)
 
-      const objPictures = new FormData() 
+        const objPictures = new FormData() 
 
-      objPictures.append('file', this.state.imageUrl)
-      objPictures.append('name', this.state.picName)
-      objPictures.append('continent', this.state.continent)
-      objPictures.append('country', this.state.country)
-      objPictures.append('lat', this.state.lat)
-      objPictures.append('long', this.state.long)
-      objPictures.append('location', this.state.location)
-      objPictures.append('legend', this.state.legend)
+            objPictures.append('file', this.state.imageUrl)
+            objPictures.append('name', this.state.picName)
+            objPictures.append('continent', this.state.continent)
+            objPictures.append('country', this.state.country)
+            objPictures.append('lat', this.state.lat)
+            objPictures.append('long', this.state.long)
+            objPictures.append('location', this.state.location)
+            objPictures.append('legend', this.state.legend)
       
         const params = this.props.match.params
 

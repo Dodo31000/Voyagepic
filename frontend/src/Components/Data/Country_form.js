@@ -22,12 +22,12 @@ function ContryForm({
 
             <div className="input-box">
                 <label htmlFor="country">Pays</label>
-                <input type="text" name="name" value={nameValue} onChange={handleChange}/>
+                <input type="text" name="name" value={nameValue} onChange={handleChange} required/>
             </div>
 
             <div className="input-box">
                 <label htmlFor="url">Image Url</label>
-                <input type="file" name="file" onChange={handleUrlChange}/>
+                <input type="file" name="file" onChange={handleUrlChange} required/>
                 <div className="cancel-img" onClick={handleCancel}> &#10006;</div>
             </div>
 
@@ -35,7 +35,7 @@ function ContryForm({
             
             <div className="input-box">
                 <label htmlFor="continent">Continent</label>
-                <select name="continent" id="continent" value={continentValue} onChange={handleChange}>
+                <select name="continent" id="continent" value={continentValue} onChange={handleChange} required>
                     <option value="" >--sélectionner--</option> 
                     {continents.map((continent, index) => 
                         <option value={continent._id} key = {index}>{continent.name}</option> 
@@ -45,19 +45,19 @@ function ContryForm({
 
             <div className="input-box">
                 <label htmlFor="latitude">Latitude</label>
-                <input type="number" name="lat" value={latValue} onChange={handleChange}/> 
+                <input type="number" name="lat" value={latValue} onChange={handleChange} required/> 
             </div>
             <small>*Utiliser des virgules</small>
 
             <div className="input-box">
                 <label htmlFor="longitude">Longitude</label>
-                <input type="number" name="long" value={longValue} onChange={handleChange}/>
+                <input type="number" name="long" value={longValue} onChange={handleChange} required/>
             </div>
             <small>*Utiliser des virgules</small>
             
             <div className="input-box">
                 <label htmlFor="description">Description</label>
-                <textarea name="description" value={descriptionValue} id="description" cols="50" rows="5" onChange={handleChange}/>
+                <textarea name="description" value={descriptionValue} id="description" cols="50" rows="5" onChange={handleChange} required/>
             </div>
 
             <button className="btn-modify">Enregistrer</button>
