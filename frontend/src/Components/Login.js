@@ -1,13 +1,18 @@
 import React , { Component } from 'react';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import authHeader from './Service/auth-header';
 
 class Login extends Component{
     constructor(props) {
         super(props);
         this.state = {
             email: '',
-            password: ''            
+            password: '',
+            errors: {},          // Store error data from the backend here
+            isAuthorized: false, // If auth is successful, set this to `true`
+            isLoading: false,    
+            token: null,        
           };
           this.handleSubmit = this.handleSubmit.bind(this);
           this.handleChange = this.handleChange.bind(this);
@@ -21,7 +26,6 @@ class Login extends Component{
         });
     }
 
-
       handleSubmit(e){
         e.preventDefault()
 
@@ -29,20 +33,63 @@ class Login extends Component{
             email: this.state.email,
             password: this.state.password
           };
+          
+
+    /*axios.post('/api/auth/signup', { user })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })*/
 
           //const token = JSON.parse(sessionStorage.getItem('data'));
             //const token = user.data.id; /*take only token and save in token variable*/
 
-        //const token = Buffer.from(`${this.state.username}:${this.state.pwd}`, 'utf8').toString('base64')
+        const token = Buffer.from(`${this.state.username}:${this.state.pwd}`, 'utf8').toString('base64')
 
-    axios.post('/api/auth/signup', { user }/*, {headers: { Authorization: `Bearer ${token}` }}*/)
-      .then(res => {
+        /*'Content-Type': 'application/json', 'Token': localStorage.getItem("token"), Authorization: `Bearer ${token}`*/
+
+       
+
+    axios.post('/api/auth/login', user, 
+    /*{ headers: authHeader() }*/
+        /*{headers: { 
+            'Content-Type': 'application/json', 
+            Authorization: `Bearer ${token}`}
+        }) */ 
+       /* {headers: {
+            'Content-Type': 'application/json',
+            'Device': 'device',
+            'Token': localStorage.getItem("token")
+        }}*/
+        /*{headers: {
+            'Authorization': `Bearer ${JSON.parse(value).access_token}`,
+            'Accept': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }}*/
+        )
+        .then((response) => {
+            if (response.data.accessToken) {
+              localStorage.setItem("user", JSON.stringify(response.data));
+            }
+    
+            return response.data;
+      })
+    /*.then(data =>{
+        this.setState({isLoading: false, isAuthorized: true});
+        this.props.history.push('/continents');
+        this.props.history.go();
+    })
+    .then(res => {
         console.log(res);
         console.log(res.data);
-      })
+      })*/
+    .catch(error => {
+        console.log(error && error.response);
+        this.setState({errors: error.response.data, isLoading: false})
+    });
       
-       // this.props.history.push('/continents');
-       // this.props.history.go();
+       //this.props.history.push('/continents');
+       //this.props.history.go();
 
         }
 
