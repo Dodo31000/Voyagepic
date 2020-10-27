@@ -1,6 +1,6 @@
 
 
-export function ObjContinents(imageUrl, name) {
+export function ObjContinents({imageUrl, name}) {
   
     const objContinents = new FormData() 
 

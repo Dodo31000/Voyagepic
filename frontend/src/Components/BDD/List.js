@@ -101,13 +101,37 @@ class List extends Component{
       }
 
     handleSubmit(e){
-        e.preventDefault()       
+        e.preventDefault()     
+        
         const params = this.props.match.params
+        
+    const objContinents = new FormData() 
 
-        const { name, imageUrl} = this.state
+        objContinents.append('file', this.state.imageUrl)
+        objContinents.append('name', this.state.name)
+
+    const CountryData = new FormData()
     
+        CountryData.append('file', this.state.imageUrl)
+        CountryData.append('name', this.state.name)
+        CountryData.append('continent', this.state.continent)
+        CountryData.append('lat', this.state.lat)
+        CountryData.append('long', this.state.long)
+        CountryData.append('description', this.state.description)
+
+    const pictureData = new FormData() 
+    
+        pictureData.append('file', this.state.imageUrl)
+        pictureData.append('name', this.state.picName)
+        pictureData.append('continent', this.state.continent)
+        pictureData.append('country', this.state.country)
+        pictureData.append('lat', this.state.lat)
+        pictureData.append('long', this.state.long)
+        pictureData.append('location', this.state.location)
+        pictureData.append('legend', this.state.legend)
+        
             axios.post('/api/'+ params.item +'/auth', 
-                params.item === "continents" ? ObjContinents(name, imageUrl) : (params.item === "countries" ? CountryData() : pictureData()),
+                params.item === "continents" ? objContinents : (params.item === "countries" ? CountryData() : pictureData()),
                 { headers: headersAuth() })
         }
 
@@ -197,8 +221,7 @@ class List extends Component{
                     </div>
                     )
                     }
-                    {JSON.stringify(this.state)}
-                    
+                   
 
                     <div className = "buttons">
                         <Link to="/">

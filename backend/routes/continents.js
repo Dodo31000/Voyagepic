@@ -10,7 +10,7 @@ const continentCtrl = require('../controllers/continents');
 router.get('/', continentCtrl.getAllContinents);
 
 /*AFFICHER les éléments de la DB*/
-router.get('/auth', auth, continentCtrl.getAllContinents);
+router.get('/auth',  continentCtrl.getAllContinents);
 
 /*AFFICHER les COUNTRIES de la DB*/
 //router.get('/countries',  auth, continentCtrl.getAllCountries);
