@@ -8,6 +8,8 @@ import ContinentForm from '../Data/Continent_form';
 import PictureList from '../Data/Picture_list';
 import PictureForm from '../Data/Picture_form';
 import axios from 'axios';
+import headersAuth from "../Service/auth-header";
+import { ObjContinents, CountryData, pictureData } from "../Service/ObjForm"
 
 function LinkTo ({ item }) {
         return(
@@ -39,7 +41,7 @@ class List extends Component{
             image_preview: '',
             picName:'',
             message: '',
-            errors: {}
+            errors: {},
           };
     
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -94,50 +96,29 @@ class List extends Component{
       })
     }
 
+    logOut(){
+        localStorage.removeItem('user');
+      }
+
     handleSubmit(e){
-        e.preventDefault()
-        const objContinents = new FormData() 
-
-            objContinents.append('file', this.state.imageUrl)
-            objContinents.append('name', this.state.name)
-
-        const CountryData = new FormData()
-
-            CountryData.append('file', this.state.imageUrl)
-            CountryData.append('name', this.state.name)
-            CountryData.append('continent', this.state.continent)
-            CountryData.append('lat', this.state.lat)
-            CountryData.append('long', this.state.long)
-            CountryData.append('description', this.state.description)
-        
+        e.preventDefault()       
         const params = this.props.match.params
 
-        const pictureData = new FormData() 
-
-        pictureData.append('file', this.state.imageUrl)
-        pictureData.append('name', this.state.picName)
-        pictureData.append('continent', this.state.continent)
-        pictureData.append('country', this.state.country)
-        pictureData.append('lat', this.state.lat)
-        pictureData.append('long', this.state.long)
-        pictureData.append('location', this.state.location)
-        pictureData.append('legend', this.state.legend)
+        const { name, imageUrl} = this.state
     
-
-    
-            axios.post('/api/'+params.item, 
-            params.item === "continents" ? objContinents : 
-            (params.item === "countries" ? CountryData : pictureData))
-
+            axios.post('/api/'+ params.item +'/auth', 
+                params.item === "continents" ? ObjContinents(name, imageUrl) : (params.item === "countries" ? CountryData() : pictureData()),
+                { headers: headersAuth() })
         }
 
 
-
+        
     componentDidMount() {
+
             axios.all([
-                axios.get('/api/continents'), 
-                axios.get('/api/countries'),
-                axios.get('/api/pictures')
+                axios.get('/api/continents/auth', { headers: headersAuth() } ), 
+                axios.get('/api/countries/auth', { headers: headersAuth() } ),
+                axios.get('/api/pictures/auth', { headers: headersAuth() } )
             ]).then(axios.spread((res1, res2, res3) => {
                 this.setState({continents: res1.data, isLoaded: true});
                 this.setState({countries: res2.data, isLoaded: true});
@@ -146,9 +127,7 @@ class List extends Component{
                 //console.log(data)
             }        
         ))
-            .catch(errors => {
-                console.log(errors);
-            })
+            .catch(err => Promise.reject('Request Not Authenticated!'))
     }
         
 
@@ -162,6 +141,7 @@ class List extends Component{
                     <div className="sub-db">
 
                     <nav>
+                        <Link to="/" onClick={this.logOut}>Logout</Link>
                         <LinkTo item="continents"/>
                         <LinkTo item="countries"/>
                         <LinkTo item="pictures"/>
@@ -217,7 +197,7 @@ class List extends Component{
                     </div>
                     )
                     }
-                    
+                    {JSON.stringify(this.state)}
                     
 
                     <div className = "buttons">

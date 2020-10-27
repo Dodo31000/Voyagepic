@@ -57,6 +57,12 @@ class Edit extends Component{
 
       handleDelete(){
         const params = this.props.match.params
+        
+        const user = JSON.parse(localStorage.getItem('user'))
+        const headersAuth = { 
+            'Content-Type': 'application/json', 
+             Authorization: `Bearer ${user.token}`
+         }
 
       const ObjCountry = new FormData()
 
@@ -79,12 +85,11 @@ class Edit extends Component{
         objPictures.append('legend', this.state.legend)
 
         axios.all([
-          axios.delete('/api/'+params.item+'/delete/'+params.id),
-          axios.post('/api/'+params.item+'/delete/'+params.id, params.item === "continents" ? '' : (params.item === "countries" ? ObjCountry : objPictures)),   
-      ]).then(axios.spread((res1, res2) => {
-          //console.log(res1.data);
-          //console.log(res2.data);
-      }))
+          axios.delete('/api/'+params.item+'/auth/delete/'+params.id, { headers: headersAuth }),
+          axios.post('/api/'+ params.item +'/auth/delete/'+params.id, 
+            params.item === "continents" ? '' : (params.item === "countries" ? ObjCountry : objPictures),
+            { headers: headersAuth }),   
+      ]).then(axios.spread())
 
        window.setTimeout(this.props.history.push('/'+params.item), 2000);
        this.props.history.go();
@@ -93,6 +98,14 @@ class Edit extends Component{
 
       handleSubmit = async (e) => {
         e.preventDefault()
+
+        const params = this.props.match.params
+        
+        const user = JSON.parse(localStorage.getItem('user'))
+        const headersAuth = { 
+            'Content-Type': 'application/json', 
+             Authorization: `Bearer ${user.token}`
+         }
 
         const objContinents = new FormData() 
 
@@ -118,10 +131,11 @@ class Edit extends Component{
             objPictures.append('long', this.state.long)
             objPictures.append('location', this.state.location)
             objPictures.append('legend', this.state.legend)
-      
-        const params = this.props.match.params
+    
 
-        await axios.put('/api/'+params.item+'/update/'+params.id,  params.item === "continents" ? objContinents : (params.item === "countries" ? CountryData : objPictures))
+        await axios.put('/api/'+params.item+'/auth/update/'+params.id,  
+            params.item === "continents" ? objContinents : (params.item === "countries" ? CountryData : objPictures), 
+            { headers: headersAuth })
 
         window.setTimeout(this.props.history.push('/'+this.props.match.params.item), 2000);
         this.props.history.go();
@@ -129,11 +143,16 @@ class Edit extends Component{
 
       componentDidMount() {
         const params = this.props.match.params
+        const user = JSON.parse(localStorage.getItem('user'))
+        const headersAuth = { 
+            'Content-Type': 'application/json', 
+             Authorization: `Bearer ${user.token}`
+         }
 
         axios.all([
-            axios.get('/api/continents'),
-            axios.get('/api/countries'), 
-            axios.get('/api/'+params.item+'/'+ params.id),
+            axios.get('/api/continents/auth',{headers: headersAuth}),
+            axios.get('/api/countries/auth', {headers: headersAuth}), 
+            axios.get('/api/'+params.item+'/auth/'+ params.id, {headers: headersAuth}),
         ]).then(axios.spread((res1, res2, res3) => {
             this.setState({continents: res1.data, isLoaded: true});
             this.setState({countries: res2.data, isLoaded: true});

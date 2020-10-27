@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import { getContinentsList, getCountriesList } from "./client"
 
 class ContryList extends Component{
     constructor(props) {
@@ -15,21 +16,16 @@ class ContryList extends Component{
 
     componentDidMount() {
         axios.all([
-            axios.get('/api/continents'), 
-            axios.get('/api/countries')
-        ]).then(axios.spread((res1, res2) => {
-            this.setState({continents: res1.data, isLoaded: true});
-            this.setState({countries: res2.data, isLoaded: true})
-            //const data = JSON.stringify(this.state);
-              //  console.log(data)
-            }        
-        ))
-            .catch(errors => {
-                console.log(errors);
-            })
+        getContinentsList(),
+        getCountriesList()
+        ])
+        .then(axios.spread((countries, continents) => {
+            this.setState({ countries, isLoaded: true });
+            this.setState({ continents, isLoaded: true });
+          }))
     }
 
-    componentDidUpdate(prevProps, prevState) { //wrapped in a condition, or you’ll cause an infinite loop
+    /*componentDidUpdate(prevProps, prevState) { //wrapped in a condition, or you’ll cause an infinite loop
        if (this.props.countries !== prevProps.countries) {
             axios.get('/api/countries')
             .then(res => {
@@ -39,7 +35,7 @@ class ContryList extends Component{
                 console.log(error);
             }) 
         }  
-    }
+    }*/
 
 
     render(){

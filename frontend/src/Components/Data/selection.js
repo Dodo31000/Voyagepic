@@ -24,10 +24,16 @@ class Selection extends Component{
     }
 
     componentDidMount() {
+        const user = JSON.parse(localStorage.getItem('user'))
+        const headersAuth = { 
+        'Content-Type': 'application/json', 
+         Authorization: `Bearer ${user.token}`
+     }
+
         axios.all([
-            axios.get('/api/continents'), 
-            axios.get('/api/countries'),
-            axios.get('/api/pictures'),
+            axios.get('/api/continents', { headers: headersAuth }), 
+            axios.get('/api/countries', { headers: headersAuth }),
+            axios.get('/api/pictures', { headers: headersAuth }),
         ]).then(axios.spread((res1, res2, res3) => {
             this.setState({continents: res1.data, isLoaded: true});
             this.setState({countries: res2.data, isLoaded: true});

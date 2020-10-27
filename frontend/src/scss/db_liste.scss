@@ -139,7 +139,7 @@
                     justify-content: space-between;
                     align-items: center;
                     width: 100%;
-                    textarea, input, select, option{
+                    textarea, input:not([type="file"]), select, option{
                         width:70%;
                         color: black;
                     }

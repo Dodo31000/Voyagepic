@@ -1,7 +1,6 @@
 import React , { Component } from 'react';
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import authHeader from './Service/auth-header';
 
 class Login extends Component{
     constructor(props) {
@@ -51,11 +50,11 @@ class Login extends Component{
        
 
     axios.post('/api/auth/login', user, 
-    /*{ headers: authHeader() }*/
-        /*{headers: { 
-            'Content-Type': 'application/json', 
-            Authorization: `Bearer ${token}`}
-        }) */ 
+        /*{ headers: authHeader() }*/
+        {headers: { 
+           'Content-Type': 'application/json', 
+            Authorization: `Bearer ${token}`},
+        } 
        /* {headers: {
             'Content-Type': 'application/json',
             'Device': 'device',
@@ -67,19 +66,21 @@ class Login extends Component{
             'Content-Type': 'application/x-www-form-urlencoded'
         }}*/
         )
-        .then((response) => {
+        /*.then((response) => {
             if (response.data.accessToken) {
               localStorage.setItem("user", JSON.stringify(response.data));
             }
     
             return response.data;
-      })
-    /*.then(data =>{
+      })*/
+    .then(response =>{
         this.setState({isLoading: false, isAuthorized: true});
+        localStorage.setItem("user", JSON.stringify(response.data));
+        console.log(token);
         this.props.history.push('/continents');
         this.props.history.go();
     })
-    .then(res => {
+    /*.then(res => {
         console.log(res);
         console.log(res.data);
       })*/
