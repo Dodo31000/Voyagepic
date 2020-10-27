@@ -96,10 +96,6 @@ class List extends Component{
       })
     }
 
-    logOut(){
-        localStorage.removeItem('user');
-      }
-
     handleSubmit(e){
         e.preventDefault()     
         
@@ -131,7 +127,7 @@ class List extends Component{
         pictureData.append('legend', this.state.legend)
         
             axios.post('/api/'+ params.item +'/auth', 
-                params.item === "continents" ? objContinents : (params.item === "countries" ? CountryData() : pictureData()),
+                params.item === "continents" ? objContinents : (params.item === "countries" ? CountryData : pictureData),
                 { headers: headersAuth() })
         }
 
@@ -165,7 +161,6 @@ class List extends Component{
                     <div className="sub-db">
 
                     <nav>
-                        <Link to="/" onClick={this.logOut}>Logout</Link>
                         <LinkTo item="continents"/>
                         <LinkTo item="countries"/>
                         <LinkTo item="pictures"/>

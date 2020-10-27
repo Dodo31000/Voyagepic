@@ -17,13 +17,29 @@ class ContryList extends Component{
     componentDidMount() {
         axios.all([
         getContinentsList(),
-        getCountriesList()
+        getCountriesList(),
         ])
-        .then(axios.spread((countries, continents) => {
-            this.setState({ countries, isLoaded: true });
+        .then(axios.spread((continents, countries) => {
             this.setState({ continents, isLoaded: true });
+            this.setState({ countries, isLoaded: true });
           }))
     }
+
+    /*componentDidMount() {
+        axios.all([
+            axios.get('/api/continents'), 
+            axios.get('/api/countries')
+        ]).then(axios.spread((res1, res2) => {
+            this.setState({continents: res1.data, isLoaded: true});
+            this.setState({countries: res2.data, isLoaded: true})
+            //const data = JSON.stringify(this.state);
+              //  console.log(data)
+            }        
+        ))
+            .catch(errors => {
+                console.log(errors);
+            })
+    }*/
 
     /*componentDidUpdate(prevProps, prevState) { //wrapped in a condition, or you’ll cause an infinite loop
        if (this.props.countries !== prevProps.countries) {

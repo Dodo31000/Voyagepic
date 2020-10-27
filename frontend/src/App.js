@@ -28,6 +28,7 @@ class App extends Component{
       pictures:[],
       countries:[],
       isLoaded: false,
+      isAuthorized: false,
     }
 
   constructor(props) {
@@ -41,7 +42,11 @@ class App extends Component{
     burgerMenu.classList.toggle("open");
     standarMenu.classList.toggle("display-menu");
   }
-      
+
+  logOut(){
+    localStorage.removeItem('user');
+  }     
+
 
       
   render(){
@@ -58,6 +63,8 @@ class App extends Component{
           <Header 
           openMenuClick = {this.openMenuClick}
           item ={item}
+          logOut = {this.logOut}
+          isAuthorized = {this.state.isAuthorized}
           />
 
           <div className="main-container" 

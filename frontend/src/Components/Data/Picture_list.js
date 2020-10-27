@@ -23,10 +23,10 @@ class Picturelist extends Component{
             getCountriesList(),
             getPicturesList()
             ])
-            .then(axios.spread((pictures, continents, countries) => {
-                this.setState({ pictures, isLoaded: true });
-                this.setState({ countries, isLoaded: true });
+            .then(axios.spread((continents, countries, pictures) => {
                 this.setState({ continents, isLoaded: true });
+                this.setState({ countries, isLoaded: true });
+                this.setState({ pictures, isLoaded: true });
               }))
     }
 
