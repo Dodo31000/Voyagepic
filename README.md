@@ -1,5 +1,6 @@
-# TravelPic Website
-Site galerie de photographies de voyage pour les mettre en valeur et présenter un projet React.js.
+# VoyagePic Website
+Site galerie de photographies de voyage pour les mettre en valeur et présenter un projet MERN (Mongo DB, Express, React.js, Node.js).
+Sélection de la destination pour en afficher les photographies et affichage de la localisation de celle-ci sur une map.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
