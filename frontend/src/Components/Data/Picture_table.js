@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import { Fragment } from 'react';
 import { Link } from "react-router-dom";
-import Selection from './selection'
 
 
 const PictureTable = ({pictures}) =>{
@@ -9,14 +8,12 @@ const PictureTable = ({pictures}) =>{
     return(
     <Fragment>      
         
-        <Selection/>
-
         <table>
             <tbody>
                 <tr>
-                    <th>Name</th>
-                    <th>Continent</th>
                     <th>Pays</th>
+                    <th>Continent</th>
+                    <th>Name</th>
                     <th>Latitude</th>
                     <th>Longitude</th>
                     <th>Location</th>
@@ -25,10 +22,10 @@ const PictureTable = ({pictures}) =>{
                 </tr>               
 
             {pictures.map((picture, index) => 
-                <tr key = {index}>
-                    <td>{picture.name}</td>
-                    <td>{picture.continent.name}</td>
+                <tr key = {index} className = "filterlist">
                     <td>{picture.country.name}</td>
+                    <td>{picture.continent.name}</td>
+                    <td>{picture.name}</td>
                     <td>{picture.lat}</td>
                     <td>{picture.long}</td>
                     <td>{picture.location}</td>

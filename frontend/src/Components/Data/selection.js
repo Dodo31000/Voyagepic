@@ -14,6 +14,7 @@ class Selection extends Component{
             country:'',
           };
           this.handleChange = this.handleChange.bind(this);
+          this.reset = this.reset.bind(this);
       }
 
     handleChange(event){
@@ -21,7 +22,28 @@ class Selection extends Component{
         this.setState({
             [name]: event.target.value
         });
+        
     }
+
+    handlefilter(e){
+        const contiVal = e.target.value.toLowerCase();
+ 
+        document.querySelectorAll('.filterlist').forEach(conti => {
+            const item = conti.firstChild.textContent;
+ 
+            if (item.toLowerCase()===contiVal){
+                conti.style.display ='table-row'; 
+            }else{
+                 conti.style.display ='none';
+            }
+        });
+     }
+
+     reset(){
+        document.querySelectorAll('.filterlist').forEach(conti => {
+            conti.style.display ='table-row'; 
+        })
+     }
 
     componentDidMount() {
         const user = JSON.parse(localStorage.getItem('user'))
@@ -57,29 +79,29 @@ class Selection extends Component{
         return(
 
             <div className="pictures-nav">
+                <h3>Filtrer :</h3>
                 <div className="input-box">
                     <label htmlFor="continent">Continent</label>
                     <select name="continent" id="continent" value={continent} onChange={this.handleChange}>
                         <option value="" >--sélectionner--</option> 
                         {this.state.continents.map((continent, index) => 
-                            <option value={continent._id} key = {index}>{continent.name}</option> 
+                            <option value={continent._id} key = {index} name ={continent.name} >{continent.name}</option> 
                         )}
                     </select>
                 </div>
 
                 <div className="input-box">
                     <label htmlFor="country">Country</label>
-                    <select name="country" id="country" value={country} onChange={this.handleChange}>
+                    <select name="country" id="country" value={country} onChange={this.handleChange, this.handlefilter}>
                         <option value="" >--sélectionner--</option> 
                         {this.state.countries.filter(country => country.continent._id === continent).map((country, index) => 
-                            <option value={country._id} key = {index}>{country.name}</option>     
+                            <option value={country.name} key = {index}>{country.name}</option>     
                         )}
                     </select>
                 </div>
 
-                <Link to={`/pictures/${country}`}>
-                    <button className="btn-link" >Filtrer</button>
-                </Link>
+
+                <button className="btn-link" onClick={this.reset}>Reset</button>
                 
             </div>
 

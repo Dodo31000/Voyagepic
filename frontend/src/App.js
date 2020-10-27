@@ -7,7 +7,6 @@ import SimpleContact from './Components/SimpleContact';
 import List from './Components/BDD/List';
 import Edit from './Components/BDD/Edit';
 import Login from './Components/Login';
-import PictureByCountrylist from './Components/Data/Picture_listByCountry'
 import {
     BrowserRouter as Router,
     Switch,
@@ -97,11 +96,6 @@ class App extends Component{
 
                     <Route exact path="/:item/edit/:id"  render={(props)=> 
                       <Edit {...props}/> 
-                    } 
-                    />
-
-                    <Route exact path="/:item/:countryId"  render={(props)=> 
-                      <PictureByCountrylist {...props}/> 
                     } 
                     />
                     

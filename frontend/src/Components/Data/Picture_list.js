@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import PictureTable from './Picture_table'
+import Selection from "./selection"
 import { getContinentsList, getCountriesList, getPicturesList} from "./client"
 
 class Picturelist extends Component{
@@ -15,6 +16,8 @@ class Picturelist extends Component{
           };
 
       }
+
+    
 
     componentDidMount() {
 
@@ -55,7 +58,9 @@ class Picturelist extends Component{
             )
           } else {
         return(
-            <div className = "item-selection">          
+            <div className = "item-selection">     
+
+                <Selection />
 
                 <PictureTable pictures={this.state.pictures}/>
 

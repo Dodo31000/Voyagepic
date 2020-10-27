@@ -100,11 +100,11 @@ const fs = require('fs'); //file systeme
   };
 
   /*AFFICHER les CONTINENTS de la DB*/
-  exports.getPicturesByCountryId = (req, res, next) => {
+  /*exports.getPicturesByCountryId = (req, res, next) => {
     pictureSchema.find({country : req.params.countryId})
     .populate('continent').sort({name:1})
     .populate('country').sort({name:1})
       .then(pictures => res.status(200).json(pictures))
       .catch(error => res.status(400).json({ error }));
   };
-  
+  */
