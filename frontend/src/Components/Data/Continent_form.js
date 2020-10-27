@@ -23,7 +23,7 @@ function ContinentForm({
 
                 <div className="input-box">
                     <label htmlFor="url">Image Url</label>
-                    <input type="file" name="file" onChange={handleUrlChange} required/>
+                    <input type="file" name="file" onChange={handleUrlChange}/>
                     <div className="cancel-img" onClick={handleCancel}> &#10006;</div>
                 </div>
 

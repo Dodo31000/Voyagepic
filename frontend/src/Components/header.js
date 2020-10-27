@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 
-const Header = ({openMenuClick, item}) =>(
+
+const Header = ({openMenuClick, item, logOut, isAuthorized}) =>(
     <header>
         <div className = "logo-nav">
             <Link to="/">
@@ -28,9 +29,22 @@ const Header = ({openMenuClick, item}) =>(
             </nav>
         </div> 
 
-        <Link to={`/${item}`}>
-            <h1>VoyagePic</h1>
+        <nav style = { { Display: `${isAuthorized ? 'block' : 'none'}`} }>
+            <ul>
+                <Link to={`/${item}`}>
+                    <li>DataB<hr/></li>
+                </Link>
+
+                <Link to="/" onClick={logOut}>
+                    <li>Logout<hr/></li>
+                </Link> 
+            </ul>  
+        </nav>
+
+        <Link to='login'>
+                <h1>VoyagePic</h1>
         </Link>
+
     </header>
 )
 

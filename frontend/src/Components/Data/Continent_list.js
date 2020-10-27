@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import axios from 'axios';
+import { getContinentsList } from "./client"
 
 class ContinentList extends Component{
     constructor(props) {
@@ -13,7 +13,7 @@ class ContinentList extends Component{
     
       }
 
-    componentDidUpdate(prevProps, prevState) { //wrapped in a condition, or you’ll cause an infinite loop
+    /*componentDidUpdate(prevProps, prevState) { //wrapped in a condition, or you’ll cause an infinite loop
        if (this.props.continents !== prevProps.continents) {
             axios.get('/api/continents')
             .then(res => {
@@ -23,22 +23,12 @@ class ContinentList extends Component{
                 console.log(error);
             }) 
         }  
-    }
+    }*/
 
     componentDidMount() {
-        axios.all([
-            axios.get('/api/continents'), 
-            axios.get('/api/continents/countries')
-        ]).then(axios.spread((res1, res2) => {
-            this.setState({continents: res1.data, isLoaded: true});
-            this.setState({countries: res2.data, isLoaded: true})
-            //const data = JSON.stringify(this.state);
-                //console.log(data)
-            }        
-        ))
-            .catch(errors => {
-                console.log(errors);
-            })
+        getContinentsList().then((continents) => {
+            this.setState({ continents, isLoaded: true });
+          });
     }
 
 

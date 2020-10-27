@@ -6,6 +6,7 @@ import Introduce from './Components/Introduce';
 import SimpleContact from './Components/SimpleContact';
 import List from './Components/BDD/List';
 import Edit from './Components/BDD/Edit';
+import Login from './Components/Login';
 import PictureByCountrylist from './Components/Data/Picture_listByCountry'
 import {
     BrowserRouter as Router,
@@ -27,6 +28,7 @@ class App extends Component{
       pictures:[],
       countries:[],
       isLoaded: false,
+      isAuthorized: false,
     }
 
   constructor(props) {
@@ -40,7 +42,11 @@ class App extends Component{
     burgerMenu.classList.toggle("open");
     standarMenu.classList.toggle("display-menu");
   }
-      
+
+  logOut(){
+    localStorage.removeItem('user');
+  }     
+
 
       
   render(){
@@ -57,6 +63,8 @@ class App extends Component{
           <Header 
           openMenuClick = {this.openMenuClick}
           item ={item}
+          logOut = {this.logOut}
+          isAuthorized = {this.state.isAuthorized}
           />
 
           <div className="main-container" 
@@ -75,6 +83,11 @@ class App extends Component{
                     <Route exact path="/Gallery/:continentName/:countryName"  render={(props)=> 
                       <Gallery {...props} />
                       } 
+                    />
+
+                    <Route exact path="/login"  render={(props)=> 
+                      <Login {...props}/> 
+                    } 
                     />
 
                     <Route exact path="/:item"  render={(props)=> 
