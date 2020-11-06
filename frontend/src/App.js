@@ -27,7 +27,6 @@ class App extends Component{
       pictures:[],
       countries:[],
       isLoaded: false,
-      isAuthorized: false,
     }
 
   constructor(props) {
@@ -44,6 +43,7 @@ class App extends Component{
 
   logOut(){
     localStorage.removeItem('user');
+    //window.location.reload(false);
   }     
 
 
@@ -63,7 +63,6 @@ class App extends Component{
           openMenuClick = {this.openMenuClick}
           item ={item}
           logOut = {this.logOut}
-          isAuthorized = {this.state.isAuthorized}
           />
 
           <div className="main-container" 

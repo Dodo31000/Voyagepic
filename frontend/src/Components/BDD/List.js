@@ -129,6 +129,9 @@ class List extends Component{
             axios.post('/api/'+ params.item +'/auth', 
                 params.item === "continents" ? objContinents : (params.item === "countries" ? CountryData : pictureData),
                 { headers: headersAuth() })
+                .then(res =>{
+                    window.location.reload(false);
+                })
         }
 
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 
-const Header = ({openMenuClick, item, logOut, isAuthorized}) =>(
+const Header = ({ openMenuClick, item, logOut }) =>(
     <header>
         <div className = "logo-nav">
             <Link to="/">
@@ -29,7 +29,7 @@ const Header = ({openMenuClick, item, logOut, isAuthorized}) =>(
             </nav>
         </div> 
 
-        <nav style = { { Display: `${isAuthorized ? 'block' : 'none'}`} }>
+        <nav style = { { display: `${localStorage.getItem("user")!==null ? 'block' : 'none'}`} }>
             <ul>
                 <Link to={`/${item}`}>
                     <li>DataB<hr/></li>
@@ -44,7 +44,6 @@ const Header = ({openMenuClick, item, logOut, isAuthorized}) =>(
         <Link to='login'>
                 <h1>VoyagePic</h1>
         </Link>
-
     </header>
 )
 
