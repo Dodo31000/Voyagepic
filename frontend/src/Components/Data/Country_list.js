@@ -25,35 +25,6 @@ class ContryList extends Component{
           }))
     }
 
-    /*componentDidMount() {
-        axios.all([
-            axios.get('/api/continents'), 
-            axios.get('/api/countries')
-        ]).then(axios.spread((res1, res2) => {
-            this.setState({continents: res1.data, isLoaded: true});
-            this.setState({countries: res2.data, isLoaded: true})
-            //const data = JSON.stringify(this.state);
-              //  console.log(data)
-            }        
-        ))
-            .catch(errors => {
-                console.log(errors);
-            })
-    }*/
-
-    /*componentDidUpdate(prevProps, prevState) { //wrapped in a condition, or you’ll cause an infinite loop
-       if (this.props.countries !== prevProps.countries) {
-            axios.get('/api/countries')
-            .then(res => {
-                this.setState({countries: res.data, isLoaded: true});
-            })
-            .catch(function (error) {
-                console.log(error);
-            }) 
-        }  
-    }*/
-
-
     render(){
         const { error, isLoaded } = this.state;
         if (error) {

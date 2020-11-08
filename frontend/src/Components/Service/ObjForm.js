@@ -9,31 +9,31 @@ export function ObjContinents({imageUrl, name}) {
     
 }
 
-export function CountryData() {
+export function ObjCountry() {
     
-    const CountryData = new FormData()
+    const ObjCountry = new FormData()
     
-    CountryData.append('file', this.state.imageUrl)
-    CountryData.append('name', this.state.name)
-    CountryData.append('continent', this.state.continent)
-    CountryData.append('lat', this.state.lat)
-    CountryData.append('long', this.state.long)
-    CountryData.append('description', this.state.description)
+    ObjCountry.append('file', this.state.imageUrl)
+    ObjCountry.append('name', this.state.name)
+    ObjCountry.append('continent', this.state.continent)
+    ObjCountry.append('lat', this.state.lat)
+    ObjCountry.append('long', this.state.long)
+    ObjCountry.append('description', this.state.description)
 
 }
 
-export function pictureData() {
+export function ObjPicture() {
     
-    const pictureData = new FormData() 
+    const ObjPicture = new FormData() 
     
-    pictureData.append('file', this.state.imageUrl)
-    pictureData.append('name', this.state.picName)
-    pictureData.append('continent', this.state.continent)
-    pictureData.append('country', this.state.country)
-    pictureData.append('lat', this.state.lat)
-    pictureData.append('long', this.state.long)
-    pictureData.append('location', this.state.location)
-    pictureData.append('legend', this.state.legend)
+    ObjPicture.append('file', this.state.imageUrl)
+    ObjPicture.append('name', this.state.picName)
+    ObjPicture.append('continent', this.state.continent)
+    ObjPicture.append('country', this.state.country)
+    ObjPicture.append('lat', this.state.lat)
+    ObjPicture.append('long', this.state.long)
+    ObjPicture.append('location', this.state.location)
+    ObjPicture.append('legend', this.state.legend)
 
 }
 

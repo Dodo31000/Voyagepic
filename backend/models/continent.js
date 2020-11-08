@@ -7,8 +7,5 @@ const continentSchema = mongoose.Schema({
   imageUrl:{ type: String, required: true },
   countries : [{ type: mongoose.Schema.Types.ObjectId, ref: 'Countries' }]
 });
-//continentSchema.countries.push(countrySchema);
-//continentSchema.save(done);
-//const Countries = mongoose.model('Countries', countrySchema);
 
 module.exports = mongoose.model('continents', continentSchema);

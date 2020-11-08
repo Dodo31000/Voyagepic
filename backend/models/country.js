@@ -12,9 +12,4 @@ const countrySchema = mongoose.Schema({
     pictures:[{ type: mongoose.Schema.Types.ObjectId, ref: 'Pictures' }]
 });
 
-//continents.countries.push(countrySchema);
-//continents.save(done);
-
-//const continents = mongoose.model('continents', continentSchema);
-
 module.exports = mongoose.model('Countries', countrySchema);

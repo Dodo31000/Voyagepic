@@ -33,18 +33,6 @@ class Picturelist extends Component{
               }))
     }
 
-    /*componentDidUpdate(prevProps, prevState) { //wrapped in a condition, or you’ll cause an infinite loop
-       if (this.props.pictures !== prevProps.pictures) {
-            axios.get('/api/pictures')
-            .then(res => {
-                this.setState({pictures: res.data, isLoaded: true});
-            })
-            .catch(function (error) {
-                console.log(error);
-            }) 
-        }  
-    }*/
-
 
     render(){
         const { error, isLoaded } = this.state;

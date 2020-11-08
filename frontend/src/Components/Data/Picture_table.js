@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Fragment } from 'react';
 import { Link } from "react-router-dom";
 
 
 const PictureTable = ({pictures}) =>{
-    ///const [pictures] = useState([]);
     return(
     <Fragment>      
         

@@ -18,9 +18,6 @@ router.get('/auth',  auth, pictureCtrl.getAllContinents);
 /*AFFICHER les COUNTRIES de la DB*/
 router.get('/auth',  auth, pictureCtrl.getAllCountries);
 
-/*AFFICHER les COUNTRIES de la DB*/
-//router.get('/auth/filter/:countryId',  auth, pictureCtrl.getPicturesByCountryId);
-
 /*AJOUTER un élément dans la DB*/
 router.post('/auth', auth, multer, pictureCtrl.createPicture); //placer "multer" après "auth" !
 

@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from 'react';
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
 import axios from 'axios';
 
 class Selection extends Component{
@@ -61,7 +60,7 @@ class Selection extends Component{
             this.setState({countries: res2.data, isLoaded: true});
             this.setState({pictures: res3.data, isLoaded: true})
             //const data = JSON.stringify(this.state);
-             //   console.log(data)
+            //console.log(data)
             }        
         ))
             .catch(errors => {
