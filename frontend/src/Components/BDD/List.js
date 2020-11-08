@@ -9,7 +9,7 @@ import PictureList from '../Data/Picture_list';
 import PictureForm from '../Data/Picture_form';
 import axios from 'axios';
 import headersAuth from "../Service/auth-header";
-import { ObjContinents, CountryData, pictureData } from "../Service/ObjForm"
+import { ObjContinents, ObjCountry, ObjPicture } from "../Service/ObjForm"
 
 function LinkTo ({ item }) {
         return(
@@ -105,6 +105,8 @@ class List extends Component{
 
         objContinents.append('file', this.state.imageUrl)
         objContinents.append('name', this.state.name)
+
+    //ObjContinents(this.state.imageUrl, this.state.name)   
 
     const CountryData = new FormData()
     
