@@ -70,7 +70,7 @@ class ContinentList extends Component{
 
                             <td><img src={continent.imageUrl} alt="" width="100%"/></td>
                             <td>
-                                <Link to={`/continents/edit/${continent._id}`}>
+                                <Link to={`/admin/continents/edit/${continent._id}`}>
                                     <button className="btn-modify" >Modifier</button>
                                 </Link>
                             </td>

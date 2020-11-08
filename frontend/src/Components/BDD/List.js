@@ -13,7 +13,7 @@ import { ObjContinents, CountryData, pictureData } from "../Service/ObjForm"
 
 function LinkTo ({ item }) {
         return(
-        <Link to={`/${item}`}>
+        <Link to={`/admin/${item}`}>
             <button className="btn-link" >{item}</button>
         </Link>
         )
@@ -150,7 +150,13 @@ class List extends Component{
                 //console.log(data)
             }        
         ))
-            .catch(err => Promise.reject('Request Not Authenticated!'))
+            .catch(err =>{ 
+                Promise.reject('Request Not Authenticated!');
+                this.props.history.push('/error401');
+                this.props.history.go();
+            })
+
+            
     }
         
 

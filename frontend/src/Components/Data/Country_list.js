@@ -89,7 +89,7 @@ class ContryList extends Component{
                             <td><img src={country.imageUrl} alt="" width="100%"/></td>
             
                             <td>
-                                <Link to={`/countries/edit/${country._id}`}>
+                                <Link to={`/admin/countries/edit/${country._id}`}>
                                     <button className="btn-modify" >Modifier</button>
                                 </Link>
                             </td>

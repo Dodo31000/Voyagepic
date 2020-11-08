@@ -176,6 +176,8 @@ class Edit extends Component{
         ))
             .catch(errors => {
                 console.log(errors);
+                this.props.history.push('/error401');
+                this.props.history.go();
             })
     }
 
@@ -240,7 +242,7 @@ class Edit extends Component{
                         
 
                         <div className = "buttons">
-                            <Link to={`/${item}`}>
+                            <Link to={`/admin/${item}`}>
                                 <button><span>&#10094;</span> Retour</button>
                             </Link>
                         </div> 

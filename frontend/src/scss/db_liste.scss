@@ -1,5 +1,14 @@
 @import 'partial';
 
+.error{
+    background: white;
+    h1, h2{
+        color: $default-color;
+    }
+    figure{
+        max-width: 40em;
+    }
+}
 
 .db{
     width:100%;

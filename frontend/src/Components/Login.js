@@ -77,7 +77,7 @@ class Login extends Component{
         this.setState({isLoading: false, isAuthorized: true});
         localStorage.setItem("user", JSON.stringify(response.data));
         console.log(token);
-        this.props.history.push('/continents');
+        this.props.history.push('/admin/continents');
         this.props.history.go();
     })
     /*.then(res => {

@@ -33,7 +33,7 @@ const PictureTable = ({pictures}) =>{
                     <td><img src={picture.imageUrl} alt="" width="100%"/></td>
     
                     <td>
-                        <Link to={`/pictures/edit/${picture._id}`}>
+                        <Link to={`/admin/pictures/edit/${picture._id}`}>
                             <button className="btn-modify" >Modifier</button>
                         </Link>
                     </td>

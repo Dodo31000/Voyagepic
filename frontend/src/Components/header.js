@@ -31,7 +31,7 @@ const Header = ({ openMenuClick, item, logOut }) =>(
 
         <nav style = { { display: `${localStorage.getItem("user")!==null ? 'block' : 'none'}`} }>
             <ul>
-                <Link to={`/${item}`}>
+                <Link to={`/admin/${item}`}>
                     <li>DataB<hr/></li>
                 </Link>
 

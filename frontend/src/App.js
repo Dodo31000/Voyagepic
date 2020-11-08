@@ -7,6 +7,7 @@ import SimpleContact from './Components/SimpleContact';
 import List from './Components/BDD/List';
 import Edit from './Components/BDD/Edit';
 import Login from './Components/Login';
+import Error401 from './Components/Service/error_401';
 import {
     BrowserRouter as Router,
     Switch,
@@ -88,12 +89,12 @@ class App extends Component{
                     } 
                     />
 
-                    <Route exact path="/:item"  render={(props)=> 
+                    <Route exact path="/admin/:item"  render={(props)=> 
                       <List {...props}/> 
                     } 
                     />
 
-                    <Route exact path="/:item/edit/:id"  render={(props)=> 
+                    <Route exact path="/admin/:item/edit/:id"  render={(props)=> 
                       <Edit {...props}/> 
                     } 
                     />
@@ -110,6 +111,11 @@ class App extends Component{
 
                     <Route exact path ="/" render={()=> 
                       <Home />
+                      } 
+                    />
+
+                    <Route exact path ="/error401" render={()=> 
+                      <Error401 />
                       } 
                     />
                   </Switch>
