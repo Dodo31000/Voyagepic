@@ -106,8 +106,6 @@ class List extends Component{
         objContinents.append('file', this.state.imageUrl)
         objContinents.append('name', this.state.name)
 
-    //ObjContinents(this.state.imageUrl, this.state.name)   
-
     const CountryData = new FormData()
     
         CountryData.append('file', this.state.imageUrl)
@@ -154,8 +152,10 @@ class List extends Component{
         ))
             .catch(err =>{ 
                 Promise.reject('Request Not Authenticated!');
+                if(err.response.status===401){
                 this.props.history.push('/error401');
                 this.props.history.go();
+                }
             })
 
             

@@ -65,6 +65,10 @@ class Selection extends Component{
         ))
             .catch(errors => {
                 console.log(errors);
+                if(errors.response.status===401){
+                    this.props.history.push('/error401');
+                    this.props.history.go();
+                }
             })
     }
 

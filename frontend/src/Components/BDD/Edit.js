@@ -91,7 +91,7 @@ class Edit extends Component{
             { headers: headersAuth }),   
       ]).then(axios.spread())
 
-       window.setTimeout(this.props.history.push('/'+params.item), 2000);
+       window.setTimeout(this.props.history.push('/admin/'+params.item), 2000);
        this.props.history.go();
       }
 
@@ -112,14 +112,14 @@ class Edit extends Component{
             objContinents.append('file', this.state.imageUrl)
             objContinents.append('name', this.state.name)
 
-        const CountryData = new FormData()
+        const objCountry = new FormData()
 
-            CountryData.append('file', this.state.imageUrl)
-            CountryData.append('name', this.state.name)
-            CountryData.append('continent', this.state.continent)
-            CountryData.append('lat', this.state.lat)
-            CountryData.append('long', this.state.long)
-            CountryData.append('description', this.state.description)
+            objCountry.append('file', this.state.imageUrl)
+            objCountry.append('name', this.state.name)
+            objCountry.append('continent', this.state.continent)
+            objCountry.append('lat', this.state.lat)
+            objCountry.append('long', this.state.long)
+            objCountry.append('description', this.state.description)
 
         const objPictures = new FormData() 
 
@@ -134,10 +134,10 @@ class Edit extends Component{
     
 
         await axios.put('/api/'+params.item+'/auth/update/'+params.id,  
-            params.item === "continents" ? objContinents : (params.item === "countries" ? CountryData : objPictures), 
+            params.item === "continents" ? objContinents : (params.item === "countries" ? objCountry : objPictures), 
             { headers: headersAuth })
 
-        window.setTimeout(this.props.history.push('/'+this.props.match.params.item), 2000);
+        window.setTimeout(this.props.history.push('/admin/'+this.props.match.params.item), 2000);
         this.props.history.go();
       }
 
@@ -176,8 +176,10 @@ class Edit extends Component{
         ))
             .catch(errors => {
                 console.log(errors);
-                this.props.history.push('/error401');
-                this.props.history.go();
+                if(errors.response.status===401){
+                    this.props.history.push('/error401');
+                    this.props.history.go();
+                }
             })
     }
 

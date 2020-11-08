@@ -27,7 +27,7 @@ function ContryForm({
 
             <div className="input-box">
                 <label htmlFor="url">Image Url</label>
-                <input type="file" name="file" onChange={handleUrlChange} required/>
+                <input type="file" name="file" onChange={handleUrlChange}/>
                 <div className="cancel-img" onClick={handleCancel}> &#10006;</div>
             </div>
 
@@ -47,13 +47,13 @@ function ContryForm({
                 <label htmlFor="latitude">Latitude</label>
                 <input type="number" name="lat" value={latValue} onChange={handleChange} required/> 
             </div>
-            <small>*Utiliser des virgules</small>
+            {/*<small>*Utiliser des virgules</small>*/}
 
             <div className="input-box">
                 <label htmlFor="longitude">Longitude</label>
                 <input type="number" name="long" value={longValue} onChange={handleChange} required/>
             </div>
-            <small>*Utiliser des virgules</small>
+            {/*<small>*Utiliser des virgules</small>*/}
             
             <div className="input-box">
                 <label htmlFor="description">Description</label>

@@ -25,7 +25,7 @@ router.post('/auth', auth, multer, pictureCtrl.createPicture); //placer "multer"
 router.get('/auth/:id',  auth, pictureCtrl.getOnePicture);
   
 /*MODIFIER un élément de la DB*/
-router.put('/authupdate/:id',  auth, multer, pictureCtrl.editPicture);
+router.put('/auth/update/:id',  auth, multer, pictureCtrl.editPicture);
 
 /*SUPPRIMER la PICTURE (_id) de la DB COUNTRY*/
 router.post('/auth/delete/:id',  auth, multer, pictureCtrl.removePictureToCountry);
