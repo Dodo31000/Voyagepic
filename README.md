@@ -1,4 +1,5 @@
 # VoyagePic Website
+Projet de montée en compétences personnelle sur React.js
 Site galerie de photographies de voyage pour les mettre en valeur et présenter un projet MERN (Mongo DB, Express, React.js, Node.js).
 Sélection de la destination pour en afficher les photographies et affichage de la localisation de celle-ci sur une map.
 
